@@ -2,10 +2,18 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => res.type('html').send(html));
+app.get("/", (req, res){
+ 
+  const redirect = `intent://callback?${new URLSearchParams(
+    req.body
+  ).toString()}#Intent;package=${
+    'kr.artof.jds'
+  };scheme=signinwithapple;end`;
+  console.log(`Redirecting to ${redirect}`);
+  res.redirect(307, redirect);
+}); 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
 const html = `
 <!DOCTYPE html>
 <html>
