@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => res.type('html').send(html));
-app.post("/apple", (req, res) { 
+app.post("/apple", (req, res) => { 
   const redirect = `intent://callback?${new URLSearchParams(
     req.body
   ).toString()}#Intent;package=${
@@ -12,7 +12,7 @@ app.post("/apple", (req, res) {
 
   console.log(`Redirecting to ${redirect}`);
   
-  response.redirect(307, redirect);
+  res.redirect(307, redirect);
 }); 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
