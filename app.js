@@ -12,7 +12,15 @@ app.post("/apple", (req, res) => {
   
   res.redirect(307, redirect);
 }); 
+app.get("/app", (req, res) => { 
+  const redirect = `intent://callback?${new URLSearchParams(
+    req.body
+  ).toString()}#Intent;package=kr.artof.jds;scheme=signinwithapple;end`;
 
+  console.log(`Redirecting to ${redirect}`);
+  
+  res.redirect(307, redirect);
+}); 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 const html = `
 <!DOCTYPE html>
