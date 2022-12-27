@@ -17,9 +17,9 @@ app.get("/app", (req, res) => {
     req.body
   ).toString()}#Intent;package=kr.artof.jds;scheme=signinwithapple;end`;
 
-  console.log(`Redirecting to ${redirect}`);
-  
-  res.redirect(307, redirect);
+  //console.log(`Redirecting to ${redirect}`);
+  res.send(redirect);
+  //res.redirect(307, redirect);
 }); 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 const html = `
