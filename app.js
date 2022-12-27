@@ -7,7 +7,7 @@ app.post("/apple", (req, res) => {
   const redirect = `intent://callback?${new URLSearchParams(
     req.body
   ).toString()}#Intent;package=${
-    'kr.artof.jds'
+    `kr.artof.jds`
   };scheme=signinwithapple;end`;
 
   console.log(`Redirecting to ${redirect}`);
