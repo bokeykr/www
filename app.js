@@ -30,24 +30,6 @@ app.post("/apple", (request, response) => {
   response.redirect(307, redirect);
 });
 
-// Endpoint for the app to login or register with the `code` obtained during Sign in with Apple
-//
-// Use this endpoint to exchange the code (which must be validated with Apple within 5 minutes) for a session in your system
-app.get("/app", async (request, response) => {
-    const redirect = `intent://callback?${new URLSearchParams(
-      request.body
-    ).toString()}#Intent;package=${
-      process.env.ANDROID_PACKAGE_IDENTIFIER
-    };scheme=signinwithapple;end`;
-  
-    console.log(`Redirecting to ${redirect}`);
-    
-    response.json(redirect);
-  
-  
-});
-
-// listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
